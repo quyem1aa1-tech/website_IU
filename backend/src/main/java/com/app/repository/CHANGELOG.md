@@ -9,7 +9,7 @@ TẠO RA THÊM CÁI MỚI:
 - ### **website_IU\backend\src\main\java\com\app\repository\UserRepository.java: một hàm để truy xuất bên trong Optional<User> (chưa biết có hay chưa) bằng findByUsername(...) 🌟🌟**
   
 - ### **website_IU\backend\src\main\java\com\app\service\AuthService.java: File AuthService.java 🌟🌟:**
-
+[CHANGELOG.md](../../../../../../../website_IU/backend/src/main/java/com/app/repository/CHANGELOG.md)
 **Thông tin về file** ❗❗
 
 1. Nhiệm vụ: Đóng vai trò là Tầng nghiệp vụ (Service Layer).
