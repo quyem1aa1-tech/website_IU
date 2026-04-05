@@ -9,14 +9,14 @@ TẠO RA THÊM CÁI MỚI:
 - website_IU\backend\src\main\java\com\app\repository\UserRepository.java: một hàm để truy xuất bên trong Optional<User> (chưa biết có hay chưa) bằng findByUsername(...) 🌟🌟
   
 - website_IU\backend\src\main\java\com\app\service\AuthService.java: File AuthService.java 🌟:
-❗❗ **Thông tin về file** ❗❗
+ ❗❗ **Thông tin về file** ❗❗
 1. Nhiệm vụ: Đóng vai trò là Tầng nghiệp vụ (Service Layer).
 2. Chức năng chính: > - Kết nối giữa Controller và Repository.
 3. Thực hiện quy trình xác thực (Authentication): Kiểm tra tài khoản tồn tại -> So sánh mật khẩu -> Trả về thông báo định danh.
 ⚠️⚠️ Lưu ý kỹ thuật: Hiện đang so sánh mật khẩu dạng văn bản thuần (Plain-text). Cần nâng cấp lên BCrypt ở nhánh dev2 để bảo mật hơn.
 
 - website_IU\backend\src\main\java\com\app\service\UserService.java: UserService.java 🌟🌟:
-.❗❗ **Thông tin về file** ❗❗:
+ ❗❗ **Thông tin về file** ❗❗:
 1. Tích hợp Enum LoginStatus: Thay vì trả về đúng/sai đơn giản, giờ đây hệ thống đã có thể "nói" chính xác tại sao đăng nhập thất bại (Sai tên hay sai pass).
 
 2. Sử dụng Optional<User>: Đảm bảo an toàn tuyệt đối khi tìm kiếm, không lo bị crash app nếu gõ nhầm tên user.
@@ -36,7 +36,7 @@ B4: Nếu sai pass -> Trả về WRONG_PASSWORD.
 B5: Nếu khớp -> Trả về SUCCESS.
 
 - website_IU\backend\src\main\java\com\app\dto\AuthControllerse.java: AuthResponse.java 🌟🌟:
-**❗❗ Thông tin về file ❗❗**
+ **❗❗ Thông tin về file ❗❗**
 Loại file: DTO (Data Transfer Object).
 Nhiệm vụ: Chuẩn hóa dữ liệu trả về cho Client (Postman/Browser).
 
@@ -63,7 +63,8 @@ WRONG_PASSWORD: Trả về 401 Unauthorized. Báo là "Vào đúng nhà rồi nh
 
 DEFAULT: Trả về 500 Internal Server Error. Đây là cái "lưới bảo hiểm" nếu có lỗi gì đó mà mình chưa lường trước được.
 
-❗❗ File: AuthController.java (thuộc package com.app.controller)
+ ❗❗ **Thông tin về file** ❗❗:
+File: AuthController.java (thuộc package com.app.controller)
 Nhiệm vụ: Tiếp nhận HTTP Request và điều phối luồng dữ liệu.
 Các kỹ thuật sử dụng:
 
