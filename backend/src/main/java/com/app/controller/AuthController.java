@@ -14,7 +14,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginData data) {
-        System.out.println("CAlled");
         return authService.login(data.getUsername(), data.getPassword());
     }
 }
