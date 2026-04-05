@@ -4,7 +4,6 @@ import com.app.dto.AuthResponse;
 import com.app.service.UserService;
 import com.app.entity.LoginStatus;
 import com.app.entity.User;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +23,7 @@ public class AuthController {
         switch (status) {
             case SUCCESS:
 
-                // Take old information from use to return
+                // Take old information from user to return
 
                 User user = userService.getUserByUsername(username).get();
                 return ResponseEntity.ok(new AuthResponse("success", "Welcome!", user.getUsername(), user.getRole()));
