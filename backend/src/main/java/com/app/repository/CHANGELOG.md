@@ -13,7 +13,8 @@ TẠO RA THÊM CÁI MỚI:
 1. Nhiệm vụ: Đóng vai trò là Tầng nghiệp vụ (Service Layer).
 2. Chức năng chính: > - Kết nối giữa Controller và Repository.
 3. Thực hiện quy trình xác thực (Authentication): Kiểm tra tài khoản tồn tại -> So sánh mật khẩu -> Trả về thông báo định danh.
-⚠️⚠️ Lưu ý kỹ thuật: Hiện đang so sánh mật khẩu dạng văn bản thuần (Plain-text). Cần nâng cấp lên BCrypt ở nhánh dev2 để bảo mật hơn.
+
+Lưu ý kỹ thuật: Hiện đang so sánh mật khẩu dạng văn bản thuần (Plain-text). Cần nâng cấp lên BCrypt ở nhánh dev2 để bảo mật hơn. ⚠️⚠️
 
 - website_IU\backend\src\main\java\com\app\service\UserService.java: UserService.java 🌟🌟:
  ❗❗ **Thông tin về file** ❗❗:
