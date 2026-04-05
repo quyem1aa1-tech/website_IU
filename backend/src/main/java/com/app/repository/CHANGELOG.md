@@ -39,7 +39,7 @@ B4: Nếu sai pass -> Trả về WRONG_PASSWORD.
 
 B5: Nếu khớp -> Trả về SUCCESS.
 
-**- ### website_IU\backend\src\main\java\com\app\dto\AuthControllerse.java: AuthResponse.java 🌟🌟:**
+- ### **website_IU\backend\src\main\java\com\app\dto\AuthControllerse.java: AuthResponse.java 🌟🌟:**
 
  **Thông tin về file ❗❗**
   
@@ -52,7 +52,7 @@ Nhiệm vụ: Chuẩn hóa dữ liệu trả về cho Client (Postman/Browser).
 
 3. Tạo ra một cấu trúc JSON đồng nhất, giúp phía Frontend dễ dàng xử lý logic.
 
-**-### website_IU\backend\src\main\java\com\app\controller\AuthController.java 🌟🌟:**
+- ### **website_IU\backend\src\main\java\com\app\controller\AuthController.java 🌟🌟:**
 
 **👀👀 Luồng Logic 👀👀:**
 1. Nhận đầu vào: Lấy username và password từ @RequestParam (Form-encode).
