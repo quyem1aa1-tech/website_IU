@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import com.app.entity.LoginData;
 import com.app.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,8 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        return authService.login(username, password);
+    public String login(@RequestBody LoginData data) {
+        System.out.println("CAlled");
+        return authService.login(data.getUsername(), data.getPassword());
     }
 }

@@ -14,11 +14,6 @@ import org.slf4j.LoggerFactory;
 import com.app.entity.User;
 import com.app.entity.UserRole;
 import com.app.repository.UserRepository;
-import com.app.entity.UserRole;
-import com.app.repository.UserRepository;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 public class DemoApplication {
