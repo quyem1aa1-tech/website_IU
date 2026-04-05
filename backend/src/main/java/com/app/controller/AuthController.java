@@ -1,7 +1,7 @@
 package com.app.controller;
 
 import com.app.dto.AuthResponse;
-import com.app.entity.LoginData;
+import com.app.dto.LoginData;
 import com.app.service.UserService;
 import com.app.entity.LoginStatus;
 import com.app.entity.User;

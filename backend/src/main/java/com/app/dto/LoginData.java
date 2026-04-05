@@ -1,4 +1,4 @@
-package com.app.entity;
+package com.app.dto;
 
 // Login
 public class LoginData {
