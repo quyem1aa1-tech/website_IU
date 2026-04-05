@@ -40,7 +40,7 @@ public class DemoApplication {
         logger.info("===============================================");
     }
 
-    // Thêm đối tượng vào Application
+    // Add new object in application
 
     @Bean
     CommandLineRunner initDatabase(UserRepository repository) {

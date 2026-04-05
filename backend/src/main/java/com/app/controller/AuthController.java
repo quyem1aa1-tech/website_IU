@@ -1,7 +1,13 @@
 package com.app.controller;
 
-import com.app.service.AuthService;
+import com.app.dto.AuthResponse;
+import com.app.service.UserService;
+import com.app.entity.LoginStatus;
+import com.app.entity.User;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,10 +15,28 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    private AuthService authService;
+    private UserService userService;
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        return authService.login(username, password);
+    public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
+        LoginStatus status = userService.processLogin(username, password);
+
+        switch (status) {
+            case SUCCESS:
+
+                // Take old information from use to return
+
+                User user = userService.getUserByUsername(username).get();
+                return ResponseEntity.ok(new AuthResponse("success", "Welcome!", user.getUsername(), user.getRole()));
+
+            case USER_NOT_FOUND:
+                return ResponseEntity.status(404).body("Error: Username does not exist.");
+
+            case WRONG_PASSWORD:
+                return ResponseEntity.status(401).body("Error: Incorrect password. Please try again.");
+
+            default:
+                return ResponseEntity.status(500).body("An unknown error occurred.");
+        }
     }
 }

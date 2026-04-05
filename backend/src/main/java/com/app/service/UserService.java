@@ -1,5 +1,6 @@
 package com.app.service;
 
+import com.app.entity.LoginStatus;
 import com.app.entity.User;
 import com.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +31,29 @@ public class UserService {
     }
 
     /**
-     * Simple Authentication Logic
-     * Returns true if the credentials are correct.
+     * Professional Authentication Logic
+     * Returns the User object if credentials are valid, otherwise returns empty.
      */
-    public boolean authenticate(String username, String password) {
+    /**
+     * Advanced Login Logic to differentiate error types
+     */
+    public LoginStatus processLogin(String username, String password) {
         Optional<User> userOpt = userRepository.findByUsername(username);
 
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
-            // In a real-world app, you should use password encoders (like BCrypt)
-            return user.getPassword().equals(password);
+        // 1. Check if user exists
+        if (userOpt.isEmpty()) {
+            return LoginStatus.USER_NOT_FOUND;
         }
-        return false;
+
+        User user = userOpt.get();
+
+        // 2. Check if password matches
+        if (!user.getPassword().equals(password)) {
+            return LoginStatus.WRONG_PASSWORD;
+        }
+
+        // 3. Everything is correct
+        return LoginStatus.SUCCESS;
     }
 
     /**
@@ -50,4 +62,5 @@ public class UserService {
     public User saveUser(User user) {
         return userRepository.save(user);
     }
+
 }
