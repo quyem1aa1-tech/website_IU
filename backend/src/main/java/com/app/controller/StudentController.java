@@ -32,8 +32,8 @@ public class StudentController {
         String result = studentService.enrollInCourse(userId, courseId);
 
         // Kiểm tra tiền tố để phản hồi HTTP Status phù hợp cho Frontend
-        return result.startsWith("SUCCESS") 
-               ? ResponseEntity.ok(result) 
+        return result.startsWith("SUCCESS")
+               ? ResponseEntity.ok(result)
                : ResponseEntity.badRequest().body(result);
     }
 
