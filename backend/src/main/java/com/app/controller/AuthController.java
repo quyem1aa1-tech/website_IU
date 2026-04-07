@@ -21,7 +21,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        LoginStatus status = service.login(request.getUsername(), request.getPassword());
+        LoginStatus status = service.loginUser(request.getUsername(), request.getPassword());
 
         return switch (status) {
             case SUCCESS -> {

@@ -15,7 +15,7 @@ public class AuthService {
     @Autowired
     private UserRepository userRepository;
 
-    public LoginStatus login(String username, String password) {
+    public LoginStatus loginUser(String username, String password) {
         Optional<User> userOpt = userRepository.findByUsername(username);
 
         // 1. Check if user exists
