@@ -62,8 +62,8 @@
 
 **9. website_IU\backend\src\main\java\com\app\entity\User.java 🌟🌟**
  - Có cập nhật thêm mối quan hệ Many-To-Many lấy từ liststudents trong Course ra
- - Có cập nhật thêm getCouse(): Set~Course~
- - Có cập nhật thêm setCouse(Set~Course~ courses): void
+ - Có cập nhật thêm getCouse(): Set ~Course~
+ - Có cập nhật thêm setCouse(Set ~Course~ courses): void
 
 **10. website_IU\backend\src\main\java\com\app\service\AuthService.java 🌟🌟**
  - Trong hàm registerUser(SignupRequest request) Chỉnh sửa thêm tại ghi chú 1.5 FIX, xem fullname có null không và Role có null và để trống không
