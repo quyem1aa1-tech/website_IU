@@ -1,6 +1,6 @@
 # NƠI NÀY DÙNG ĐỂ GHI LẠI LỊCH SỬ CẬP NHẬT
 
-## -- ngày 4/7/2026: 9:00 AM nằm trong branch ... - Trương Thế Vinh 🕙
+## -- ngày 4/7/2026: 9:00 AM nằm trong branch feature/student-course-management - Trương Thế Vinh 🕙
 
 ### III. Chi tiết về từng file
 
