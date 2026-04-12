@@ -35,7 +35,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @ManyToMany(mappedBy = "liststudents")
+    @ManyToMany(mappedBy = "listStudents", fetch = FetchType.EAGER)
     private Set<Course> courses = new HashSet<>(); // Thêm khoá học trong học sinh
 
     // Default Constructor (Required by JPA)
