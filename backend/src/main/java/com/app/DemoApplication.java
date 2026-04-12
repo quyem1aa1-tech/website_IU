@@ -5,6 +5,7 @@ import com.app.entity.User;
 import com.app.entity.UserRole;
 import com.app.repository.CourseRepository; // Thêm import này
 import com.app.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,11 +23,12 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
         logger.info("===============================================");
         logger.info("🚀 IU WEBSITE - INTERNAL SYSTEM IS READY!");
-        logger.info("📍 Access URL: http://localhost:8080/api");
+        logger.info("📍 Access URL: http://localhost:8080");
         logger.info("===============================================");
     }
 
     @Bean
+    @Transactional
     CommandLineRunner initDatabase(UserRepository userRepository, CourseRepository courseRepository) {
         return args -> {
             // 1. Khởi tạo USER (Nếu trống)
