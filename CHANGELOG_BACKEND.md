@@ -1,6 +1,6 @@
 # NƠI NÀY DÙNG ĐỂ GHI LẠI LỊCH SỬ CẬP NHẬT
 
-## -- Ngày 4/8/2026 - 10:10 PM nằm trong branch: feature/user-auth-logic -- Trấn Vinh🕙
+## -- Ngày 4/8/2026 - 10:10 PM nằm trong branch: feature/student-course-management  -- Trấn Vinh🕙
 
 ## CHỈNH SỬA FILE:
 
