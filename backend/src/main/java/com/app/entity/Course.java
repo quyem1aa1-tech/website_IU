@@ -43,7 +43,7 @@ public class Course {
         return courseId;
     }
 
-    public void setCourseId(String id) {
+    public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
 
@@ -56,11 +56,11 @@ public class Course {
     }
 
     // Đã đổi tên hàm cho chuẩn
-    public Set<User> getListStudents() {
+    public Set<User> getlistStudents() {
         return listStudents;
     }
 
-    public void setListStudents(Set<User> listStudents) {
+    public void setlistStudents(Set<User> listStudents) {
         this.listStudents = listStudents;
     }
 
@@ -85,8 +85,10 @@ public class Course {
     // ================ Override Hàm để dùng Set<> ==================
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Course course = (Course) o;
         return Objects.equals(id, course.id); // Compare by ID
     }

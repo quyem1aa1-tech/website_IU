@@ -35,7 +35,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @ManyToMany(mappedBy = "liststudents")
+    @ManyToMany(mappedBy = "listStudents", fetch = FetchType.EAGER)
     private Set<Course> courses = new HashSet<>(); // Thêm khoá học trong học sinh
 
     // Default Constructor (Required by JPA)
@@ -106,15 +106,13 @@ public class User {
     public Course findCourseById(String courseId) {
         return courses.stream()
                 .filter(course -> course.getCourseId().equalsIgnoreCase(courseId))
-                .findFirst().
-                orElse(null);
+                .findFirst().orElse(null);
     }
 
     public Course findCourseByName(String name) {
         return courses.stream()
                 .filter(course -> course.getCourseName().equalsIgnoreCase(name))
-                .findFirst().
-                orElse(null);
+                .findFirst().orElse(null);
     }
 
     public int getCourseCount() {
