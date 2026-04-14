@@ -13,6 +13,7 @@ if (!username) {
     }
 }
 
+
 // 3. Xử lý logic nút Log Out (nếu bạn muốn làm sạch dữ liệu khi thoát)
 const logoutBtn = document.querySelector('a[href="index.html"]');
 if (logoutBtn) {

@@ -10,6 +10,7 @@ const username = localStorage.getItem("username");
 
 // --- 2. CÁC HÀM HỖ TRỢ LOGIC ---
 
+
 /**
  * Hàm lấy danh sách ID các môn học mà sinh viên hiện đang có trên Database.
  * Trả về một mảng chứa ID dưới dạng chuỗi (String).

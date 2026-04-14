@@ -17,7 +17,6 @@
         username: username,
         password: password
     };
-
     // gửi request đến server
     fetch("/api/auth/login", {
         method: "POST",
