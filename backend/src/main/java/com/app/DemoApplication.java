@@ -57,9 +57,11 @@ public class DemoApplication {
                 Course c6 = new Course("C/C++ Programming", "IT116IU");
                 Course c7 = new Course("Philosophy of Marxism and Leninism", "PE015IU");
                 Course c8 = new Course("Scientific socialism", "PE017IU");
+                Course c9 = new Course("Linear Algebra", "MA033IU");
+                Course c10 = new Course("Writing AE2", "EN011IU");
 
                 // Lưu tất cả vào Database (Chỉ có 8 môn, không còn c9, c10 trùng lặp)
-                courseRepository.saveAll(List.of(c1, c2, c3, c4, c5, c6, c7, c8));
+                courseRepository.saveAll(List.of(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10));
                 System.out.println("📚 [Courses] Created 8 unique sample subjects!");
 
                 // 3. Kịch bản: Tự động cho Vinh học 2 môn
