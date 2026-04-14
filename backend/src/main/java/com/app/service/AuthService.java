@@ -59,7 +59,8 @@ public class AuthService {
         }
 
         User user = userOpt.get();
-        if (!passwordEncoder.matches(password, user.getPassword())) {
+        String encoded = passwordEncoder.encode(user.getPassword());
+        if (!passwordEncoder.matches(password, encoded)) {
             System.err.println("RESULT: WRONG PASSWORD!");
             return LoginStatus.WRONG_PASSWORD;
         }

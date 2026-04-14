@@ -33,19 +33,28 @@ public class AuthController {
      *         hoặc hệ thống
      */
     @PostMapping("/login")
-    public ResponseEntity<LoginStatus> login(@RequestBody LoginRequest loginData) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginData) {
         System.out.println("Full request object: " + loginData.toString());
         // Log để kiểm tra xem dữ liệu đã vào đến Controller chưa
         System.out.println("Controller received request for user: " + loginData.getUsername());
 
         // Gọi sang hàm Service mà bạn đã có sẵn
-        LoginStatus status = authService.loginUser(
-            loginData.getUsername(), 
-            loginData.getPassword()
-        );
+        try {
+            LoginStatus status = authService.loginUser(
+                    loginData.getUsername(),
+                    loginData.getPassword()
+            );
 
-        // Trả về kết quả cho phía Client
-        return ResponseEntity.ok(status);
+            // Trả về kết quả cho phía Client
+            return ResponseEntity.ok(status);
+        }
+        catch (Exception e) {
+            System.err.println("ERROR: Signup failed due to: " + e.getMessage());
+            e.printStackTrace();
+
+            // Trả về mã lỗi 500 (Server Error) kèm thông tin lỗi cho người dùng
+            return ResponseEntity.status(400).body("Server Error: " + e.getMessage());
+        }
     }
 
     /**
