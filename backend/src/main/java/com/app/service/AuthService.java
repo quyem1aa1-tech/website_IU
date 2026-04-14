@@ -6,6 +6,7 @@ import com.app.entity.User;
 import com.app.repository.UserRepository;
 import com.app.util.PasswordUtils;
 
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -59,8 +60,7 @@ public class AuthService {
         }
 
         User user = userOpt.get();
-        String encoded = passwordEncoder.encode(user.getPassword());
-        if (!passwordEncoder.matches(password, encoded)) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             System.err.println("RESULT: WRONG PASSWORD!");
             return LoginStatus.WRONG_PASSWORD;
         }
@@ -180,12 +180,10 @@ public class AuthService {
      * Hàm đổi mật khẩu.
      */
     public String resetPassword(String email) {
-        // 1. Tìm user theo email. Nếu không thấy thì "quăng" lỗi ngay
+        // Tìm user theo email.
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Error: Email không tồn tại trên hệ thống!"));
 
-        // 2. Tạo một mật khẩu mới ngẫu nhiên (hoặc đặt mặc định để test)
-        // Sau này cậu có thể dùng thư viện để tạo chuỗi ngẫu nhiên xịn hơn
         String rawNewPassword = "IU_" + (int) (Math.random() * 9000 + 1000); // Ví dụ: IU_4567
 
         // 3. CỰC KỲ QUAN TRỌNG: Mã hóa mật khẩu mới trước khi lưu
