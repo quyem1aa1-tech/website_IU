@@ -4,15 +4,12 @@ import com.app.dto.LoginRequest;
 import com.app.dto.SignupRequest;
 import com.app.service.AuthService;
 import com.app.entity.LoginStatus;
-import com.app.entity.User;
-import com.app.repository.UserRepository;
 
 import jakarta.validation.Valid;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,12 +19,6 @@ public class AuthController {
 
     @Autowired
     private AuthService service;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AuthService authService;

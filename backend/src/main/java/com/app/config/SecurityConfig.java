@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,12 +31,8 @@ public class SecurityConfig {
 
                 // 3. Phân quyền
                 .authorizeHttpRequests(auth -> auth
-                        // Cho phép tất cả các request bắt đầu bằng /api/auth/
-                        .requestMatchers("/api/auth/**").permitAll()
-                        // Cho phép truy cập trang lỗi mặc định của Spring
-                        .requestMatchers("/error").permitAll()
-                        // Tất cả các request khác phải login
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll() // Cho phép tất cả mà không cần login
+                )
 
                 // 4. Đảm bảo không dùng Form Login mặc định của Spring
                 .formLogin(form -> form.disable())
