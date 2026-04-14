@@ -6,7 +6,7 @@
 - **backend\src\main\java\com\app\DemoApplication.java (nơi hỗ trợ tạo ra những mật khẩu random)**
 
 ## Chỉnh sửa file:
--  backend\src\main\java\com\app\dto\LoginRequest.java (sử dụng @Data ; @NoArgsConstructor ; @AllArgsConstructor) 🌟🌟
+- **backend\src\main\java\com\app\dto\LoginRequest.java (sử dụng @Data ; @NoArgsConstructor ; @AllArgsConstructor) 🌟🌟**
 - **backend\src\main\java\com\app\dto\SignupRequest.java (thêm getter/setter email và studentID) 🌟🌟**
 - **backend\src\main\java\com\app\service\AuthService.java: chỉnh sửa login / registerUser / forgotpassword() 🌟🌟**
 
