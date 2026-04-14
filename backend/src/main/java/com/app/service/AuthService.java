@@ -23,6 +23,9 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Đăng nhập và xác thực thông tin đăng nhập.
+     */
     public LoginStatus loginUser(String username, String password) {
 
         // Kiểm tra null TRƯỚC khi gọi .trim()
@@ -65,7 +68,9 @@ public class AuthService {
         return LoginStatus.SUCCESS;
     }
 
-    // hàm yêu cầu
+    /**
+     * Đăng kí, xác thực thông tin đăng kí.
+     */
     public String registerUser(SignupRequest request) {
 
         // 0. Kiểm tra trùng MSSV (Cực kỳ quan trọng)
@@ -123,6 +128,9 @@ public class AuthService {
         return "SUCCESS: User registered successfully!";
     }
 
+    /**
+     * Hàm quên mật khẩu (cần email).
+     */
     public String processForgotPassword(String email) {
         // Sửa lỗi Optional: Nếu không tìm thấy sẽ gán user = null
         // Note: Tìm kiếm người dùng trong Database bằng Email
@@ -153,14 +161,23 @@ public class AuthService {
         return rawPassword;
     }
 
+    /**
+     * Lấy user từ db qua username
+     */
     public Optional<User> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
+    /**
+     * Lưu về db chứa user
+     */
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
+    /**
+     * Hàm đổi mật khẩu.
+     */
     public String resetPassword(String email) {
         // 1. Tìm user theo email. Nếu không thấy thì "quăng" lỗi ngay
         User user = userRepository.findByEmail(email)
