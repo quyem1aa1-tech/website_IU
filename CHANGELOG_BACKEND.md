@@ -11,7 +11,7 @@
 - **backend\src\main\java\com\app\service\AuthService.java: chỉnh sửa login / registerUser / forgotpassword() 🌟🌟**
 
 
-### **Đã chỉnh sửa: spring.jpa.hibernate.ddl-auto=none (nếu chưa tạo database thì phải chỉnh là create nha) ❗❗ ❗❗**
+### **Đã chỉnh sửa: spring.jpa.hibernate.ddl-auto=none (nếu chưa tạo database thì phải chỉnh là create nha hoặc lấy information.db của tôi mới gủi lên) ❗❗ ❗❗**
 
 
 
