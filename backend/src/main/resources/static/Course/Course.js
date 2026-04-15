@@ -35,7 +35,7 @@ function veGiaoDien() {
     bangTren.innerHTML = "";
     bangDuoi.innerHTML = "";
 
-    // --- BƯỚC A: VẼ BẢNG TRÊN (Môn để chọn) ---
+    // In bảng trên(bảng chưa đăng kí)
     for (let i = 0; i < tatCaMonHoc.length; i++) {
         let monNay = tatCaMonHoc[i];
 
@@ -58,9 +58,9 @@ function veGiaoDien() {
         }
     }
 
-    // --- BƯỚC B: VẼ BẢNG DƯỚI (Môn đã đăng ký) ---
+    // In bảng đã đăng kí---
     if (monDaDangKy.length === 0) {
-        bangDuoi.innerHTML = "<tr><td colspan='3'>Bạn chưa đăng ký môn nào</td></tr>";
+        bangDuoi.innerHTML = "<tr><td colspan='3'>Nothing!</td></tr>";
     } else {
         for (let i = 0; i < monDaDangKy.length; i++) {
             let monDaMua = monDaDangKy[i];

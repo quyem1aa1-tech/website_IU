@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forgot Password - HCMIU</title>
+    <link rel="stylesheet" href="../Login/login.css" />
+    <link rel="stylesheet" href="Forgot.css" />
+</head>
+<body>
+    <header>
+        <div class="navbar-header">
+            <a class="logo" href="https://hcmiu.edu.vn">
+                <img src="https://hcmiu.edu.vn/wp-content/uploads/2017/02/logoweb-02.png" alt="Logo IU" class="logo-img" />
+            </a>
+        </div>
+        <nav class="top-links">
+            <a href="#">HOME</a>
+            <a href="#">COURSE</a>
+            <a href="#">ACCOUNT</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="login-box">
+            <h2 class="title-blue">Reset Password</h2>
+            <p class="instruction">Vui lòng nhập Email sinh viên. Hệ thống sẽ cấp lại mật khẩu tạm thời vào ô bên dưới.</p>
+            
+            <form id="forgotPasswordForm">
+                <div class="input-group">
+                    <label for="email">Email IU:</label>
+                    <input type="email" id="email" name="email" placeholder="example@student.hcmiu.edu.vn" required />
+                </div>
+
+                <button type="submit" class="btn-enter">Gửi yêu cầu</button>
+                
+                <div class="forget-password back-to-login">
+                    <a href="login.html">← Quay lại Đăng nhập</a>
+                </div>
+            </form>
+            
+            <div id="responseMessage" class="message-box"></div>
+        </div>
+    </main>
+
+    <script src="forgot-password.js"></script>
+</body>
+</html>
