@@ -1,8 +1,9 @@
-/* Tận dụng các biến màu từ home.css của bạn (#2c387e) */
+/* --- 1. Bố cục tổng thể (Layout) --- */
 .course-container {
     padding: 40px 50px;
     background: #f4f4f4;
     min-height: calc(100vh - 100px);
+    font-family: Arial, sans-serif;
 }
 
 .registration-layout {
@@ -11,10 +12,18 @@
     gap: 40px;
 }
 
+/* --- 2. Tiêu đề và Thành phần chung --- */
 .section-title {
-    color: #8b2121; /* Màu đỏ giống h1 ở Home */
-    border-bottom: 2px solid #2c387e;
+    color: #8b2121; /* Màu đỏ IU */
+    border-bottom: 2px solid #2c387e; /* Màu xanh Navy IU */
     padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+/* --- 3. Danh sách môn học để chọn (Bên trái) --- */
+.course-grid {
     margin-bottom: 20px;
 }
 
@@ -26,6 +35,11 @@
     display: flex;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.course-item:hover {
+    transform: translateX(5px);
 }
 
 .course-item input[type="checkbox"] {
@@ -35,29 +49,105 @@
     cursor: pointer;
 }
 
+.btn-enter {
+    background-color: #2c387e;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.btn-enter:hover {
+    background-color: #1a237e;
+}
+
+/* --- 4. Bảng môn học đã đăng ký --- */
 .enrolled-box {
-    background: #e3f2fd;
+    background: white;
     padding: 20px;
     border-radius: 10px;
-    border-left: 5px solid #2c387e;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.enrolled-item {
-    padding: 8px 0;
+#table-registered {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#table-registered th {
+    background-color: #2c387e;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+#table-registered td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    vertical-align: middle;
+}
+
+/* --- 5. Các nút chức năng trong bảng (Action Buttons) --- */
+.btn-change {
+    background-color: #ffc107; /* Màu vàng */
+    color: #212529;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
     font-weight: bold;
-    color: #2c387e;
+    margin-right: 5px;
+    transition: 0.3s;
 }
 
+.btn-change:hover {
+    background-color: #e0a800;
+}
+
+.btn-remove {
+    background-color: #dc3545; /* Màu đỏ */
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-remove:hover {
+    background-color: #c82333;
+}
+
+/* --- 6. Cột tìm kiếm (Bên phải) --- */
 .search-box {
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 20px;
+}
+
+.search-box h3 {
+    margin-top: 0;
+    color: #2c387e;
+    font-size: 1.2rem;
 }
 
 .search-box input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-sizing: border-box; /* Đảm bảo padding không làm tràn chiều rộng */
 }

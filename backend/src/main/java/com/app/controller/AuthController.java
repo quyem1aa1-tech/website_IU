@@ -69,39 +69,7 @@ public class AuthController {
      * @return 200 OK nếu tạo tài khoản thành công | 501/400 nếu có lỗi nghiệp vụ
      *         hoặc hệ thống
      */
-    @PostMapping("/signup")
-    public ResponseEntity<String> signup(@Valid @RequestBody SignupRequest request) {
-        try {
-            // Bước 1: Ghi log khi bắt đầu nhận yêu cầu
-            System.out.println("LOG: Processing signup request for user: " + request.getUsername());
 
-            /**
-             * Bước 2: Gọi tầng Service để xử lý logic (Kiểm tra trùng, mã hóa pass, lưu DB)
-             * Note: Bạn phải đảm bảo hàm registerUser trả về một chuỗi (String)
-             * chứ không được trả về null hoặc void để tránh lỗi trắng màn hình.
-             */
-            String result = service.registerUser(request);
-
-            // Bước 3: Kiểm tra nếu kết quả trả về bị trống
-            if (result == null || result.isEmpty()) {
-                System.out.println("WARNING: Service returned an empty result!");
-                return ResponseEntity.ok("Registration successful, but no message returned.");
-            }
-
-            // Bước 4: Trả về kết quả thành công cho người dùng (Frontend sẽ thấy dòng này)
-            System.out.println("SUCCESS: User registered successfully: " + request.getUsername());
-            return ResponseEntity.ok(result);
-
-        } catch (Exception e) {
-            // Bước 5: Xử lý khi có lỗi (Ví dụ: Trùng username, lỗi kết nối Database)
-            // Note: In lỗi chi tiết ra console để bạn "debug"
-            System.err.println("ERROR: Signup failed due to: " + e.getMessage());
-            e.printStackTrace();
-
-            // Trả về mã lỗi 500 (Server Error) kèm thông tin lỗi cho người dùng
-            return ResponseEntity.status(500).body("Server Error: " + e.getMessage());
-        }
-    }
 
     /**
      * API Quên mật khẩu (Forgot Password)

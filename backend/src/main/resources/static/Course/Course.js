@@ -1,89 +1,108 @@
-/**
- * Tệp: Course.js
- * Chức năng: Đồng bộ hóa đăng ký/hủy môn học giữa Giao diện và Database.
- */
+// 1. KHAI BÁO "BỘ NHỚ" CỦA TRANG WEB
+const SINH_VIEN_ID = localStorage.getItem("userId");
+const CUA_HANG_API = "http://localhost:8080/api";
 
-// 1. LẤY THÔNG TIN CẤU HÌNH
-const userId = localStorage.getItem("userId") || 1;
+let tatCaMonHoc = [];      // Kho tổng (chứa mọi thứ)
+let monDaDangKy = [];      // Giỏ hàng cá nhân (chứa đồ đã mua)
 
-/**
- * Lấy danh sách ID (Primary Key) các môn User đang học để hiển thị dấu tích (Check).
- */
-async function getEnrolledServerIds() {
-    try {
-        const res = await fetch(`http://localhost:8080/api/students/${userId}/courses`);
-        const data = await res.json();
-        return data.map(c => c.id.toString()); // Dùng ID để so sánh với checkbox value
-    } catch (e) { return []; }
+// 2. KHI MỞ TRANG WEB LÊN: Đi lấy hàng ngay
+document.addEventListener("DOMContentLoaded", function() {
+    batDauTaiDuLieu();
+    ganSuKienTimKiem();
+});
+
+// Hàm điều phối việc tải dữ liệu
+async function batDauTaiDuLieu() {
+    // Đi tới kho lấy danh sách tổng
+    const response1 = await fetch(CUA_HANG_API + "/courses");
+    tatCaMonHoc = await response1.json();
+
+    // Đi hỏi xem sinh viên này đã đăng ký gì chưa
+    const response2 = await fetch(CUA_HANG_API + "/students/" + SINH_VIEN_ID + "/courses");
+    monDaDangKy = await response2.json();
+
+    // Sau khi có 2 danh sách rồi, bắt đầu dán lên bảng cho người dùng xem
+    veGiaoDien();
 }
 
-/**
- * Hiển thị danh sách môn học từ Database.
- */
-async function loadAllCourses() {
-    const list = document.getElementById("danh_sach_mon_hoc");
-    try {
-        const [allRes, serverIds] = await Promise.all([
-            fetch('http://localhost:8080/api/courses'),
-            getEnrolledServerIds()
-        ]);
-        const allCourses = await allRes.json();
-        list.innerHTML = "";
+// 3. HÀM VẼ GIAO DIỆN (Nơi quan trọng nhất)
+function veGiaoDien() {
+    // Lấy 2 cái bảng từ HTML ra để chuẩn bị đổ chữ vào
+    const bangTren = document.getElementById("danh_sach_mon_hoc");
+    const bangDuoi = document.getElementById("danhsachdadangki");
 
-        allCourses.forEach(c => {
-            const isChecked = serverIds.includes(c.id.toString()) ? "checked" : "";
-            list.innerHTML += `
-                <div class="course-item">
-                    <input type="checkbox" value="${c.id}" data-code="${c.courseId}" ${isChecked} class="reg-check">
-                    <label><strong>${c.courseId}</strong> - ${c.courseName}</label>
-                </div>
-            `;
-        });
-        updateSummaryUI(allCourses, serverIds);
-    } catch (e) { console.error("Lỗi tải môn:", e); }
-}
+    // Xóa sạch nội dung cũ trước khi vẽ mới
+    bangTren.innerHTML = "";
+    bangDuoi.innerHTML = "";
 
-/**
- * Xử lý khi nhấn Submit - Logic So Sánh 2 Chiều.
- */
-document.getElementById("dangki").addEventListener("click", async () => {
-    // A. Lấy tất cả Checkbox
-    const allChecks = document.querySelectorAll(".reg-check");
+    // --- BƯỚC A: VẼ BẢNG TRÊN (Môn để chọn) ---
+    for (let i = 0; i < tatCaMonHoc.length; i++) {
+        let monNay = tatCaMonHoc[i];
 
-    // B. Lấy danh sách ID đã học trên Server để so sánh
-    const serverIds = await getEnrolledServerIds();
-
-    try {
-        for (let cb of allChecks) {
-            const id = cb.value;
-            const courseCode = cb.getAttribute("data-code"); // Mã môn (VD: MATH01)
-            const isChecked = cb.checked;
-            const wasEnrolled = serverIds.includes(id);
-
-            // CƠ CHẾ:
-            // 1. Nếu tích chọn MÀ trước đó chưa học -> ENROLL
-            if (isChecked && !wasEnrolled) {
-                await fetch(`http://localhost:8080/api/students/${userId}/enroll/${courseCode}`, { method: 'POST' });
-            }
-            // 2. Nếu bỏ tích MÀ trước đó có học -> DROP
-            else if (!isChecked && wasEnrolled) {
-                await fetch(`http://localhost:8080/api/students/${userId}/drop/${courseCode}`, { method: 'DELETE' });
+        // KIỂM TRA: Nếu môn này đã nằm trong "giỏ hàng" rồi thì BỎ QUA, không vẽ lên bảng trên
+        let daMuaRoi = false;
+        for (let j = 0; j < monDaDangKy.length; j++) {
+            if (monDaDangKy[j].courseId === monNay.courseId) {
+                daMuaRoi = true;
+                break;
             }
         }
 
-        alert("Cập nhật dữ liệu thành công!");
-        loadAllCourses(); // Làm mới lại toàn bộ giao diện
-
-    } catch (error) {
-        alert("Có lỗi xảy ra!");
-        console.error(error);
+        if (daMuaRoi === false) {
+            // Nếu chưa mua thì mới tạo cái thẻ HTML dán vào bảng trên
+            bangTren.innerHTML += `
+                <div class="course-item">
+                    <input type="checkbox" class="course-checkbox" value="${monNay.courseId}">
+                    <label>${monNay.courseName}</label>
+                </div>`;
+        }
     }
-});
 
-function updateSummaryUI(all, enrolled) {
-    const box = document.getElementById("danhsachdadangki");
-    box.innerHTML = all.filter(c => enrolled.includes(c.id.toString()))
-                       .map(c => `<div class="enrolled-item">✓ ${c.courseName}</div>`).join("");
+    // --- BƯỚC B: VẼ BẢNG DƯỚI (Môn đã đăng ký) ---
+    if (monDaDangKy.length === 0) {
+        bangDuoi.innerHTML = "<tr><td colspan='3'>Bạn chưa đăng ký môn nào</td></tr>";
+    } else {
+        for (let i = 0; i < monDaDangKy.length; i++) {
+            let monDaMua = monDaDangKy[i];
+            bangDuoi.innerHTML += `
+                <tr>
+                    <td><input type="checkbox" class="enrolled-checkbox" value="${monDaMua.courseId}" checked></td>
+                    <td>${monDaMua.courseName}</td>
+                    <td>3</td>
+                </tr>`;
+        }
+    }
 }
 
-document.addEventListener("DOMContentLoaded", loadAllCourses);
+// 4. NÚT XÁC NHẬN (CONFIRM) - Đưa hàng từ trên xuống dưới
+document.getElementById("dangki").addEventListener("click", async function() {
+    // Tìm xem người dùng tích vào những ô nào ở bảng trên
+    const cacOChon = document.querySelectorAll(".course-checkbox:checked");
+
+    for (let i = 0; i < cacOChon.length; i++) {
+        const maMon = cacOChon[i].value;
+        // Gửi thư cho Server bảo: "Đăng ký môn này cho tôi"
+        await fetch(CUA_HANG_API + "/students/" + SINH_VIEN_ID + "/enroll/" + maMon, { method: 'POST' });
+    }
+
+    alert("Đã đăng ký xong!");
+    // Tải lại dữ liệu mới nhất từ Server để cập nhật bảng
+    batDauTaiDuLieu();
+});
+
+// 5. NÚT THAY ĐỔI (CHANGE) - Trả hàng từ dưới lên trên
+document.getElementById("change").addEventListener("click", async function() {
+    // Tìm các ô ở bảng dưới mà người dùng BỎ TÍCH (không chọn nữa)
+    const cacOTrongBangDuoi = document.querySelectorAll(".enrolled-checkbox");
+
+    for (let i = 0; i < cacOTrongBangDuoi.length; i++) {
+        if (cacOTrongBangDuoi[i].checked === false) {
+            const maMonCanXoa = cacOTrongBangDuoi[i].value;
+            // Gửi thư cho Server bảo: "Xóa môn này đi"
+            await fetch(CUA_HANG_API + "/students/" + SINH_VIEN_ID + "/drop/" + maMonCanXoa, { method: 'DELETE' });
+        }
+    }
+
+    alert("Đã cập nhật thay đổi!");
+    batDauTaiDuLieu();
+});

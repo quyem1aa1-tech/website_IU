@@ -1,5 +1,4 @@
 package com.app.service;
-import com.app.dto.SignupRequest;
 import com.app.entity.LoginStatus;
 import com.app.entity.User;
 import com.app.repository.UserRepository;
@@ -72,62 +71,6 @@ public class AuthService {
     /**
      * Đăng kí, xác thực thông tin đăng kí.
      */
-    public String registerUser(SignupRequest request) {
-
-        // 0. Kiểm tra trùng MSSV (Cực kỳ quan trọng)
-        if (userRepository.existsByStudentId(request.getStudentId())) {
-            throw new RuntimeException("Error: Student ID " + request.getStudentId() + " is already registered!");
-        }
-
-        // 1. Kiểm tra Username đã tồn tại chưa
-        // Note: Nếu trùng username, ném lỗi ngay lập tức để dừng luồng xử lý
-        if (userRepository.existsByUsername(request.getUsername())) {
-            throw new RuntimeException(
-                    "Registration Error: Username '" + request.getUsername() + "' is already taken.");
-        }
-
-        // 2. Kiểm tra Email (Bước cực kỳ quan trọng cho tính năng Reset Password)
-        // Note: Đảm bảo một email chỉ được đăng ký một tài khoản duy nhất
-        if (request.getEmail() == null || request.getEmail().trim().isEmpty()) {
-            throw new RuntimeException("Registration Error: Email is required.");
-        }
-
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Registration Error: Email '" + request.getEmail() + "' is already in use.");
-        }
-
-        // 3. Kiểm tra các thông tin bắt buộc khác
-        // Note: Sử dụng .trim() để loại bỏ khoảng trắng dư thừa ở hai đầu
-        if (request.getFullName() == null || request.getFullName().trim().isEmpty()) {
-            throw new RuntimeException("Registration Error: Full Name cannot be blank.");
-        }
-
-        if (request.getRole() == null) {
-            throw new RuntimeException("Registration Error: User role is missing.");
-        }
-
-        // 4. Khởi tạo đối tượng User và nạp dữ liệu
-        User user = new User();
-        user.setStudentId(request.getStudentId());
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail().trim());
-        user.setFullName(request.getFullName().trim());
-        user.setRole(request.getRole());
-
-        // 5. MÃ HÓA MẬT KHẨU (Bảo mật tuyệt đối)
-        // Note: Biến 'encodedPassword' dùng thì quá khứ để chỉ mật khẩu đã qua xử lý
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
-        user.setPassword(encodedPassword);
-
-        // 6. Lưu xuống Database
-        userRepository.save(user);
-
-        // 7. Ghi log kiểm tra trên Console (Chỉ in thông tin không nhạy cảm)
-        System.out.println("LOG: Registration successful for user: " + request.getUsername() + " with Email: "
-                + request.getEmail());
-
-        return "SUCCESS: User registered successfully!";
-    }
 
     /**
      * Hàm quên mật khẩu (cần email).
