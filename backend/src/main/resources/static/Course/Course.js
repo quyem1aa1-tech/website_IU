@@ -106,3 +106,54 @@ document.getElementById("change").addEventListener("click", async function() {
     alert("Đã cập nhật thay đổi!");
     batDauTaiDuLieu();
 });
+// Hàm này sẽ theo dõi ô nhập liệu tìm kiếm
+function ganSuKienTimKiem() {
+    const oTimKiem = document.getElementById("timkiemmonhoc");
+
+    // "input" nghĩa là mỗi khi bạn gõ 1 phím, nó sẽ chạy lệnh bên dưới ngay lập tức
+    oTimKiem.addEventListener("input", function(e) {
+        // Lấy chữ người dùng gõ và chuyển về chữ thường để so sánh cho dễ
+        const tuKhoa = e.target.value.toLowerCase();
+
+        // Tạo một danh sách mới chỉ chứa những môn khớp với từ khóa
+        let danhSachLoc = [];
+        for (let i = 0; i < tatCaMonHoc.length; i++) {
+            let tenMon = tatCaMonHoc[i].courseName.toLowerCase();
+
+            // Nếu tên môn có chứa từ khóa thì bỏ vào danh sách lọc
+            if (tenMon.includes(tuKhoa)) {
+                danhSachLoc.push(tatCaMonHoc[i]);
+            }
+        }
+
+        // Gọi hàm vẽ riêng cho bảng trên với danh sách đã lọc
+        veLaiBangTren(danhSachLoc);
+    });
+}
+
+// Hàm bổ trợ để vẽ lại bảng trên khi tìm kiếm
+function veLaiBangTren(danhSachMoi) {
+    const bangTren = document.getElementById("danh_sach_mon_hoc");
+    bangTren.innerHTML = ""; // Xóa trắng bảng trên
+
+    for (let i = 0; i < danhSachMoi.length; i++) {
+        let monNay = danhSachMoi[i];
+
+        // Vẫn phải kiểm tra: Nếu môn này ĐÃ đăng ký rồi thì không hiện ra nữa
+        let daMuaRoi = false;
+        for (let j = 0; j < monDaDangKy.length; j++) {
+            if (monDaDangKy[j].courseId === monNay.courseId) {
+                daMuaRoi = true;
+                break;
+            }
+        }
+
+        if (daMuaRoi === false) {
+            bangTren.innerHTML += `
+                <div class="course-item">
+                    <input type="checkbox" class="course-checkbox" value="${monNay.courseId}">
+                    <label>${monNay.courseName}</label>
+                </div>`;
+        }
+    }
+}
