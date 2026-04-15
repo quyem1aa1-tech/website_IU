@@ -1,52 +1,58 @@
-    // lấy form từ HTML
-    var form = document.getElementById("loginForm");
+// Tệp: login.js
 
-    // khi người dùng bấm submit
-    form.addEventListener("submit", function(event) {
+var form = document.getElementById("loginForm");
 
-    // chặn reload trang
+form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // lấy dữ liệu từ input
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-    // tạo object chứa dữ liệu
-    // json-object
     var userData = {
         username: username,
         password: password
     };
 
-    // gửi request đến server
     fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData)
     })
     .then(function(response) {
-        // Kiểm tra nếu response trả về là JSON
-        return response.json();
+        // Đọc dữ liệu dưới dạng text vì Backend trả về Enum String "SUCCESS"
+        if (response.ok) {
+            return response.text();
+        }
+        throw new Error("Mật khẩu hoặc tên đăng nhập không đúng");
     })
     .then(function(data) {
-        // data bây giờ là một Object, bạn lấy message ra để hiển thị
-        console.log("Server tra ve object:", data);
+        // Xử lý chuỗi trả về từ Server (Lưu ý: data lúc này là "SUCCESS")
+        console.log("Server trả về:", data);
 
-        // Nếu login thành công (HTTP 200), Spring trả về AuthResponse
-        if (data.message) {
-            document.getElementById("message").innerText = data.message;
+        // SỬA TẠI ĐÂY: So sánh trực tiếp với chuỗi "SUCCESS"
+        if (data === "SUCCESS" || data === "\"SUCCESS\"") {
+            // Lưu thông tin để các trang sau sử dụng
+            localStorage.setItem("username", username);
 
-            if (data.message === "Welcome to International University!") {
-            localStorage.setItem("username", data.username);
-                console.log("Next page...");
+            // Tạm thời để ID là 1 vì Backend hiện tại chưa trả về ID người dùng cụ thể
+            localStorage.setItem("userId", "1");
+
+            document.getElementById("message").style.color = "green";
+            document.getElementById("message").innerText = "Đăng nhập thành công! Đang chuyển hướng...";
+
+            // Chuyển sang trang Home
+            setTimeout(function() {
                 window.location.href = "/Home/Home.html";
-            }
+            }, 1000);
+        } else {
+            // Trường hợp Server trả về mã lỗi khác
+            document.getElementById("message").style.color = "red";
+            document.getElementById("message").innerText = "Đăng nhập thất bại: " + data;
         }
     })
     .catch(function(error) {
-        // Xử lý lỗi khi Server trả về 401, 404, 500
-        // Lưu ý: fetch không nhảy vào catch khi nhận mã 401/404, bạn cần check response.ok ở trên
-        console.error("Loi ket noi hoac loi server:", error);
+        console.error("Lỗi:", error);
+        document.getElementById("message").style.color = "red";
         document.getElementById("message").innerText = "Sai tên đăng nhập hoặc mật khẩu!";
     });
 });
