@@ -13,7 +13,6 @@ import java.util.List;
 public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
-
     /**
      * Truy vấn toàn bộ danh sách khóa học hiện có trong hệ thống.
      */

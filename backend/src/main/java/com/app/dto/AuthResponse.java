@@ -1,7 +1,14 @@
 package com.app.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 import com.app.entity.UserRole;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthResponse {
     private String status;
     private String message;
@@ -9,37 +16,7 @@ public class AuthResponse {
     private UserRole role;
     private String fullName;
 
-    // Constructor
-    public AuthResponse(String status, String message, String username, UserRole role, String fullName) {
-        this.status = status;
-        this.message = message;
-        this.username = username;
-        this.role = role;
-        this.fullName = fullName;
-    }
-
-    // Getters and Setters (Important for JSON conversion)
-    public String getStatus() {
-        return status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public String getFullName(){
-        return "Welcome: " + fullName;
-    }
-
-    public void setFullName(String fullName){
-        this.fullName = fullName;
+    public String getWelcomeMessage() {
+        return "Welcome: " + this.fullName;
     }
 }

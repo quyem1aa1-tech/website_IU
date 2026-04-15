@@ -1,0 +1,116 @@
+/* --- 1. THIẾT LẬP CƠ BẢN (RESET) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+/* --- 2. PHẦN HEADER (THANH ĐẦU TRANG) --- */
+header {
+  background: #2c387e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  height: 100px;
+  position: relative;
+  z-index: 10;
+}
+
+.navbar-header img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+/* --- 3. MENU ĐIỀU HƯỚNG --- */
+.top-links {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.top-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 0 22px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  transition: 0.3s;
+}
+
+.top-links a:first-child {
+  border-left: none;
+}
+
+.top-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background-color: rgba(52, 205, 244, 0.9);
+  transition: 0.3s;
+}
+
+.top-links a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.top-links a:hover::after, 
+.top-links a.active::after {
+  width: 100%;
+}
+
+/* --- 4. PHẦN NỘI DUNG CHÍNH (ẢNH NỀN & VỊ TRÍ) --- */
+.home-container {
+  background-image: url('Hinhanh/image2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 100px); 
+  
+  display: flex;
+  /* LỆNH QUAN TRỌNG: justify-content đẩy nội dung sang PHẢI */
+  justify-content: flex-end; 
+  /* LỆNH QUAN TRỌNG: align-items đẩy nội dung lên TRÊN */
+  align-items: flex-start; 
+  
+  padding-top: 80px;   /* Khoảng cách từ trên xuống (giảm từ 100 xuống 80 cho cao hơn) */
+  padding-right: 80px; /* Khoảng cách từ lề phải vào chữ */
+  padding-left: 0;     /* Xóa padding bên trái cũ */
+}
+
+/* --- 5. LỚP PHỦ CHỮ (TEXT OVERLAY) --- */
+.content-overlay {
+  max-width: 500px;  /* Thu hẹp thêm một chút cho gọn */
+  text-align: right; /* Căn lề chữ dạt về bên phải cho đồng bộ */
+}
+
+.content-overlay h1 {
+  color: #8b2121;
+  font-size: 2.3rem; /* Thu nhỏ tiêu đề thêm một chút */
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  line-height: 1.2;
+}
+
+.content-overlay p {
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;   /* Thu nhỏ nội dung phụ về kích thước chuẩn */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}

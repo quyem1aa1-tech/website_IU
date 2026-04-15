@@ -34,10 +34,10 @@ public class StudentService {
 
         // 1. Kiểm tra sự tồn tại của thực thể trong Database
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("LỖI: Không tìm thấy ID sinh viên: " + userId));
+                .orElseThrow(() -> new RuntimeException("ERROR: This ID student does not exist: " + userId));
 
         Course course = courseRepository.findByCourseId(courseId)
-                .orElseThrow(() -> new RuntimeException("LỖI: Không tìm thấy ID khóa học: " + courseId));
+                .orElseThrow(() -> new RuntimeException("ERROR: Student course ID not found. " + courseId));
 
         // 2. Kiểm tra nghiệp vụ (Business Logic): Tránh đăng ký trùng lặp
         // Sử dụng hàm contains() của Set để đạt hiệu năng O(1)
@@ -62,10 +62,10 @@ public class StudentService {
 
         // 1. Fetch the student and the course
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("LỖI: Không tìm thấy ID sinh viên: " + userId));
+                .orElseThrow(() -> new RuntimeException("ERROR: This ID student does not exist: " + userId));
 
         if (user.findCourseById(courseId) == null) {
-            throw new RuntimeException("LỖI: Không tìm thấy ID khóa học của sinh viên: " + courseId);
+            throw new RuntimeException("ERROR: Student course ID not found. " + courseId);
         }
         Course course = user.findCourseById(courseId);
 
@@ -76,7 +76,7 @@ public class StudentService {
         // 3. Save (the relationship is updated)
         courseRepository.save(course);
 
-        return "SUCCESS: Xóa/Bỏ thành công môn " + course.getCourseName();
+        return "SUCCESS: DELETED COURSES" + course.getCourseName();
     }
 
     /**
@@ -93,7 +93,7 @@ public class StudentService {
      */
     public ProfileResponse getUserProfile(Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("LỖI: Không tìm thấy ID sinh viên: " + userId));
+                .orElseThrow(() -> new RuntimeException("ERROR: This ID student does not exist: " + userId));
 
         return new ProfileResponse(user.getStudentId(), user.getUsername(), user.getFullName(), user.getEmail());
     }
