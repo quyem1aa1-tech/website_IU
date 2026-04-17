@@ -17,8 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: { 'Content-Type': 'application/json' }
          })
     .then(response => response.json())
-    .then
-    (data => {
+    .then(data => {
         displayProfile(data);
         // Lưu email vào localStorage nếu chưa có để dùng cho việc đổi pass
         if (!userEmail) localStorage.setItem('userEmail', data.email);
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displayProfile(profile) {
     document.getElementById('username').textContent = profile.username;
-    document.getElementById('Fullname').textContent = profile.fullname;
-    document.getElementById('Id').textContent = profile.userId;
+    document.getElementById('Fullname').textContent = profile.fullName;
+    document.getElementById('Id').textContent = profile.studentId;
     document.getElementById('Email').textContent = profile.email;
 }

@@ -18,7 +18,7 @@
             <a href="Home.html">HOME</a>
             <a href="../Course/Course.html">COURSE</a>
             <a href="../Account/Account.html">ACCOUNT</a>
-            <a href="../index.html" onclick="localStorage.clear()">LOG OUT</a>
+            <a href="javascript:void(0)" onclick="handleLogout()">LOG OUT</a>
         </nav>
     </header>
 
@@ -28,6 +28,7 @@
             <p id="welcomeText"></p>
         </div>
     </main>
+    <script src="../Auth.js"></script>
     <script src="Home.js"></script>
 </body>
 </html>

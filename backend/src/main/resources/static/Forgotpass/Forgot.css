@@ -45,3 +45,12 @@
     color: #c62828;
     border: 1px solid #ffcdd2;
 }
+.btn-password {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #2c387e;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}

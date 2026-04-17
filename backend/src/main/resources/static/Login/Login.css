@@ -158,3 +158,45 @@ main {
 .btn-enter:active {
     transform: translateY(0); /* Lún xuống khi click */
 }
+/* --- PHẦN BỔ SUNG CHO TRANG MAIN --- */
+
+/* Header chung cho toàn trang */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 65px;
+}
+
+/* Thanh điều hướng */
+.top-links {
+    display: flex;
+    gap: 20px;
+}
+
+.top-links a {
+    text-decoration: none;
+    color: #223a8d; /* Màu xanh đặc trưng của IU */
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.top-links a:hover {
+    background-color: #f0f2f5;
+}
+
+/* Nút Logout màu đỏ */
+.top-links a[onclick*="handleLogout"] {
+    color: #d9534f;
+}
+
+/* Iframe hiển thị nội dung */
+iframe {
+    width: 100%;
+    height: calc(100vh - 65px); /* Trừ đi chiều cao của header */
+    border: none;
+}

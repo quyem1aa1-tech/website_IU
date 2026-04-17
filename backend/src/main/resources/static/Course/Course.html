@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COURSE - HCMIU</title>
     <link rel="stylesheet" href="../Home/Home.css">
-    <link rel="stylesheet" href="/Course/Course.css">
+    <link rel="stylesheet" href="../Course/Course.css">
 </head>
 <body>
 <header>
     <div class="navbar-header">
-        <a class="logo" href="Home.html">
+        <a class="logo" href="../Home/Home.html">
             <img src="https://hcmiu.edu.vn/wp-content/uploads/2017/02/logoweb-02.png" alt="Logo IU" />
         </a>
     </div>
     <nav class="top-links">
         <a href="../Home/Home.html">HOME</a>
-        <a href="/Course/Course.html" class="active">COURSE</a>
+        <a href="../Course/Course.html" class="active">COURSE</a>
         <a href="../Account/Account.html">ACCOUNT</a>
-        <a href="index.html">LOG OUT</a>
+        <a href="javascript:void(0)" onclick="handleLogout()">LOG OUT</a>
     </nav>
 </header>
 
@@ -57,6 +57,7 @@
         </aside>
     </div>
 </main>
+<script src="../Auth.js"></script>
 <script src="Course.js"></script>
 </body>
 </html>
