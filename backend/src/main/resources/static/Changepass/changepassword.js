@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+// lấy form
     const changePasswordForm = document.getElementById('changePasswordForm');
+ // tạo biến để trả thong tin lên khung message
     const responseMessage = document.getElementById('responseMessage');
 
     changePasswordForm.addEventListener('submit', async function(event) {

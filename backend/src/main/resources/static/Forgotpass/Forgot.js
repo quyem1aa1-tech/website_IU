@@ -1,7 +1,3 @@
-/**
- * File: forgot-password.js (Phiên bản dùng async/await)
- * Chức năng: Gửi yêu cầu lấy mật khẩu mới một cách tuần tự, dễ đọc.
- */
 
 document.addEventListener("DOMContentLoaded", function () {
     const forgotForm = document.getElementById("forgotPasswordForm");
@@ -10,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Thêm từ khóa 'async' trước function để cho phép dùng 'await' bên trong
     forgotForm.addEventListener("submit", async function (event) {
+    // ngăn chặn reload trang
         event.preventDefault();
 
         const emailValue = emailInput.value.trim();
@@ -30,14 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify({ email: emailValue })
             });
 
-            // Lấy nội dung chữ từ phản hồi
+            // Tạo 1 biến Lấy nội dung chữ từ phản hồi
             const resultText = await response.text();
+            //Trường hợp nếu serviec thấy email tồn tại và trả về ok
 
             if (response.ok) {
                 // Trường hợp thành công (Status 200)
+                // lưu email vào hộp chứa trong suốt qua s trình quên mật khẩu và có thể sang trang change password
                 localStorage.setItem("email", email);
+                //hiển thị màu chữ của khung trả lời
                 messageBox.style.color = "#155724";
+                // hiển thị màu background của khung trả lời
                 messageBox.style.backgroundColor = "#d4edda";
+               // innerHTML CÓ TÁC DỤNG LẤY GIÁ TRỊ ĐƯỢC TRẢ VỀ BÊN PHẢI VÀ ĐẶT VÀO Ô BÊN TRÁI
+               // Khác với innerText nó sẽ thực thi thêm các thẻ strong và br của html
                 messageBox.innerHTML = `<strong>Thành công!</strong> <br> ${resultText}`;
                 emailInput.value = "";
             } else {
@@ -50,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Lỗi:", error);
             messageBox.style.color = "#721c24";
             messageBox.style.backgroundColor = "#f8d7da";
+            // lấy dữ liệu
             messageBox.innerText = "Lỗi: " + error.message;
         }
     });
