@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.status === 401) {
                     responseMessage.textContent = 'Mật khẩu hiện tại không đúng!';
                 } else if (response.status === 403) {
-                    responseMessage.textContent = 'Mật khẩu mới không đúng định dạng quy định!';
+                    responseMessage.textContent = 'Mật khẩu mới không đúng định dạng quy định! Độ dài 8-30 kí tự, ít nhất 1 chữ cái viết hoa, có ít nhất 1 chữ số, không có khoảng trắng'';
                 } else if (response.status === 405) {
                     responseMessage.textContent = 'Xác nhận mật khẩu thất bại!';
                 } else if (response.status === 404) {
