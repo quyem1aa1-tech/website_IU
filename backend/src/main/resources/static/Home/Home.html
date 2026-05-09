@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOME - HCMIU</title>
-    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="Home.css" />
 </head>
 <body>
     <header>
@@ -17,8 +17,8 @@
         <nav class="top-links">
             <a href="Home.html">HOME</a>
             <a href="../Course/Course.html">COURSE</a>
-            <a href="#">ACCOUNT</a>
-            <a href="../index.html" onclick="localStorage.clear()">LOG OUT</a>
+            <a href="../Account/Account.html">ACCOUNT</a>
+            <a href="javascript:void(0)" onclick="handleLogout()">LOG OUT</a>
         </nav>
     </header>
 
@@ -28,6 +28,7 @@
             <p id="welcomeText"></p>
         </div>
     </main>
+    <script src="../Auth.js"></script>
     <script src="Home.js"></script>
 </body>
 </html>

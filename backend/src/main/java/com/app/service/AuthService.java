@@ -68,9 +68,7 @@ public class AuthService {
         return LoginStatus.SUCCESS;
     }
 
-    /**
-     * Đăng kí, xác thực thông tin đăng kí.
-     */
+
 
     /**
      * Hàm quên mật khẩu (cần email).

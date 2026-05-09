@@ -1,11 +1,9 @@
 
 package com.app.controller;
 import com.app.dto.LoginRequest;
-import com.app.dto.SignupRequest;
 import com.app.service.AuthService;
 import com.app.entity.LoginStatus;
 
-import jakarta.validation.Valid;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;

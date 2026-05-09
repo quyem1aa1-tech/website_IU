@@ -1,6 +1,6 @@
 // 1. KHAI BÁO "BỘ NHỚ" CỦA TRANG WEB
 const SINH_VIEN_ID = localStorage.getItem("userId");
-const CUA_HANG_API = "http://localhost:8080/api";
+const CUA_HANG_API = "/api";
 
 let tatCaMonHoc = [];      // Kho tổng (chứa mọi thứ)
 let monDaDangKy = [];      // Giỏ hàng cá nhân (chứa đồ đã mua)
@@ -35,7 +35,7 @@ function veGiaoDien() {
     bangTren.innerHTML = "";
     bangDuoi.innerHTML = "";
 
-    // --- BƯỚC A: VẼ BẢNG TRÊN (Môn để chọn) ---
+    // In bảng trên(bảng chưa đăng kí)
     for (let i = 0; i < tatCaMonHoc.length; i++) {
         let monNay = tatCaMonHoc[i];
 
@@ -58,9 +58,10 @@ function veGiaoDien() {
         }
     }
 
-    // --- BƯỚC B: VẼ BẢNG DƯỚI (Môn đã đăng ký) ---
-    if (monDaDangKy.length === 0) {
-        bangDuoi.innerHTML = "<tr><td colspan='3'>Bạn chưa đăng ký môn nào</td></tr>";
+    // In bảng đã đăng kí---
+    if (monDaDangKy.length === 0) // nếu độ dài mảng bằng 0 tức là chưa có môn nào đăng kí
+    {
+        bangDuoi.innerHTML = "<tr><td colspan='3'>Nothing!</td></tr>";
     } else {
         for (let i = 0; i < monDaDangKy.length; i++) {
             let monDaMua = monDaDangKy[i];
@@ -68,7 +69,6 @@ function veGiaoDien() {
                 <tr>
                     <td><input type="checkbox" class="enrolled-checkbox" value="${monDaMua.courseId}" checked></td>
                     <td>${monDaMua.courseName}</td>
-                    <td>3</td>
                 </tr>`;
         }
     }
