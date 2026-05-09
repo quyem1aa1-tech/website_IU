@@ -19,9 +19,9 @@ Dự án mini-project xây dựng hệ thống website mạng nội bộ dành c
 4. Run ứng dụng qua file `DemoApplication.java`.
 
 ## ✨ Tính năng dự kiến
-- [ ] Đăng nhập học sinh
-- [ ] Đăng ký tài khoản học sinh (update thêm nhiệm email nữa)
-- [ ] Kiểm tra khoá học của học sinh
-- [ ] Phương thức đăng ký môn học
-- [ ] Phưng thức xoá bỏ môn học
-- [ ] (đang cập nhật)
+- [x] Cổng đăng nhập/quên mật khẩu
+- [x] Đăng nhập học sinh
+- [x] Đăng ký tài khoản học sinh (update thêm nhiệm email nữa)
+- [x] Kiểm tra khoá học của học sinh
+- [x] Phương thức đăng ký môn học
+- [x] Phưng thức xoá bỏ môn học
