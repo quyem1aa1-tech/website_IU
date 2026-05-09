@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userEmail = localStorage.getItem('userEmail'); // Bạn nên lưu email lúc login để dùng cho reset password
 
     if (!userId) {
-        window.location.href = "../LOGIN/login.html";
+        window.location.href = "../Login/Login.html";
         return;
     }
 

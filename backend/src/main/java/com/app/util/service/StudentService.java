@@ -1,4 +1,4 @@
-package com.app.service;
+package com.app.util.service;
 
 import com.app.dto.ProfileResponse;
 import com.app.entity.Course;

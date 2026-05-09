@@ -2,7 +2,8 @@ package com.app.controller;
 
 import com.app.dto.ProfileResponse;
 import com.app.entity.Course;
-import com.app.service.StudentService;
+import com.app.util.service.StudentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

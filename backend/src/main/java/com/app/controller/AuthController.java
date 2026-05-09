@@ -1,8 +1,8 @@
 
 package com.app.controller;
 import com.app.dto.LoginRequest;
-import com.app.service.AuthService;
 import com.app.entity.LoginStatus;
+import com.app.util.service.AuthService;
 
 import java.util.*;
 

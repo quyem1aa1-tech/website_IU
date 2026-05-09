@@ -25,6 +25,7 @@ public class DemoApplication {
         logger.info("===============================================");
         logger.info("🚀 IU WEBSITE - INTERNAL SYSTEM IS READY!");
         logger.info("📍 Access URL: http://localhost:8080");
+        logger.info("📍 Access URL: http://localhost:8080/Login/Login.html");
         logger.info("===============================================");
     }
 
