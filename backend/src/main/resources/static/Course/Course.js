@@ -62,7 +62,8 @@ function veGiaoDien() {
     if (monDaDangKy.length === 0) // nếu độ dài mảng bằng 0 tức là chưa có môn nào đăng kí
     {
         bangDuoi.innerHTML = "<tr><td colspan='3'>Nothing!</td></tr>";
-    } else {
+    } // ngược lại nếu mon đo
+    else {
         for (let i = 0; i < monDaDangKy.length; i++) {
             let monDaMua = monDaDangKy[i];
             bangDuoi.innerHTML += `
