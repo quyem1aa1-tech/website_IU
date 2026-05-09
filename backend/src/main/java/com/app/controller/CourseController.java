@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.Course;
 import com.app.service.CourseService;
@@ -35,11 +38,11 @@ public class CourseController {
 
     /**
      * API Tìm khóa học hiện có trong Database.
-     * URL: http://localhost:8080/api/courses
+     * URL: GET http://localhost:8080/api/courses
      *
      * * @return Danh sách JSON chứa tất cả các môn học (ID, tên môn,...)
      */
-    @PostMapping("/search")
+    @GetMapping("/search")
     public ResponseEntity<List<Course>> searchCourses(
             @RequestParam(required = false) String courseName,
             @RequestParam(required = false) String courseId
