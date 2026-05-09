@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.Course;
-import com.app.util.service.CourseService;
+import com.app.service.CourseService;
 
 /**
  * CourseController: Cửa ngõ công khai để tra cứu thông tin về các Khóa học.
