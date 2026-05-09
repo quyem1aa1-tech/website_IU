@@ -2,7 +2,6 @@ package com.app;
 
 import com.app.entity.Course; // Thêm import này
 import com.app.entity.User;
-import com.app.entity.UserRole;
 import com.app.repository.CourseRepository; // Thêm import này
 import com.app.repository.UserRepository;
 import jakarta.transaction.Transactional;

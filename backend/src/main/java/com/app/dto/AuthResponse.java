@@ -4,8 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import com.app.entity.UserRole;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
