@@ -1,4 +1,4 @@
-package com.app.util.service;
+package com.app.service;
 
 import com.app.entity.Course;
 import com.app.repository.CourseRepository;
