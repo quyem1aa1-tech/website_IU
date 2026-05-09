@@ -46,7 +46,7 @@ public class DemoApplication {
 
                 System.out.println("✅ [Users] Created: VinhTruong@@ and TranVinh (Passwords Encrypted with BCrypt!)");
             }
-            // 2. Khởi tạo COURSE (Sạch sẽ, không trùng lặp)
+            // 2. Khởi tạo COURSE (Sạch sẽ, không trùng lặp)//
             if (courseRepository.count() == 0) {
                 // Tạo danh sách môn học duy nhất
                 Course c1 = new Course("Object-Oriented Programming", "IT031IU");

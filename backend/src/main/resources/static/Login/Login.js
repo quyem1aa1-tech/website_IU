@@ -1,7 +1,7 @@
 // Tệp: login.js
-
+// LẤY THÔNG TIN TỪ FORM VỀ
 var form = document.getElementById("loginForm");
-
+// KHI NGƯỜI DÙNG NHẤN SUBMIT
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -12,6 +12,7 @@ form.addEventListener("submit", function(event) {
         username: username,
         password: password
     };
+    // GỌI API ĐỂ XỬ LÍ
 
     fetch("/api/auth/login", {
         method: "POST",
