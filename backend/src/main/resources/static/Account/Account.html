@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACCOUNT - IU</title>
+  <link rel="stylesheet" href="Account.css" />
+  <link rel="stylesheet" href="../Home/Home.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <div class="navbar-header">
+    <a class="logo" href="https://hcmiu.edu.vn">
+      <img src="https://hcmiu.edu.vn/wp-content/uploads/2017/02/logoweb-02.png" alt="IU Logo" />
+    </a>
+  </div>
+  <nav class="top-links">
+    <a href="../Home/Home.html">HOME</a>
+    <a href="../Course/Course.html">COURSE</a>
+    <a href="../Account/Account.html" class="active">ACCOUNT</a>
+    <a href="javascript:void(0)" onclick="handleLogout()">LOG OUT</a>
+  </nav>
+</header>
+
+<main>
+  <div class="account-container">
+    <div class="profile-card">
+      <h1 class="section-title"><i class="fas fa-user-circle"></i> STUDENT PROFILE</h1>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">User name:</span>
+          <span class="value" id="username"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">Full name:</span>
+          <span class="value" id="Fullname"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">Student ID:</span>
+          <span class="value" id="Id"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">Email:</span>
+          <span class="value" id="Email"></span>
+        </div>
+      </div>
+      <div class="actions">
+        <a href="../Changepass/Changepassword.html" class="btn-password" ><i class="fas fa-key"></i> Change password</a>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="../Auth.js"></script>
+<script src="Account.js"></script>
+</body>
+</html>
