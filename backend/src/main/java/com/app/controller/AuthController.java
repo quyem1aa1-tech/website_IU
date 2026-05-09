@@ -36,7 +36,6 @@ public class AuthController {
         // Log để kiểm tra xem dữ liệu đã vào đến Controller chưa
         System.out.println("Controller received request for user: " + loginData.getUsername());
 
-        // Gọi sang hàm Service mà bạn đã có sẵn
         try {
             LoginStatus status = authService.loginUser(
                     loginData.getUsername(),
