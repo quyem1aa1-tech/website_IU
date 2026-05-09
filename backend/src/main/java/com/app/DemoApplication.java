@@ -2,6 +2,7 @@ package com.app;
 
 import com.app.entity.Course; // Thêm import này
 import com.app.entity.User;
+import com.app.entity.UserRole;
 import com.app.repository.CourseRepository; // Thêm import này
 import com.app.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -23,7 +24,6 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
         logger.info("===============================================");
         logger.info("🚀 IU WEBSITE - INTERNAL SYSTEM IS READY!");
-        logger.info("📍 Access URL: http://localhost:8080");
         logger.info("📍 Access URL: http://localhost:8080/Login/Login.html");
         logger.info("===============================================");
     }
