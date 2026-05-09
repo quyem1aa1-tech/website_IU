@@ -1,4 +1,4 @@
-package com.app.service;
+package com.app.util.service;
 import com.app.entity.LoginStatus;
 import com.app.entity.User;
 import com.app.repository.UserRepository;
