@@ -1,0 +1,160 @@
+/*BASIC SETUP */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* HEADER */
+header {
+  background: #2c387e;
+  display: flex; /*dàn hàng ngang*/
+  justify-content: space-between; /*đẩy logo sang trái, menu sang phải */
+  align-items: center;
+  padding: 10px 50px;
+  height: 100px;
+}
+
+/* Logo + school name */
+.navbar-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+/* MENU BAR */
+.top-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 0 22px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3); /* vertical divider */
+  transition: 0.3s;
+}
+
+/*Delete the underline of Home */
+.top-links a:first-child {
+  border-left: none;
+}
+
+/* Effect when move the click to menu */
+.top-links a:hover {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/*Decorate for login form */
+main {
+      padding-top: 100px;
+      background-image: url("hinhanh/image1.png");
+      background-size: cover;
+      background-position: center; /* Căn giữa hình để không bị lệch */
+      background-repeat: no-repeat;
+
+      /* Quan trọng: Chiều cao phủ kín phần còn lại của màn hình */
+      min-height: calc(100vh - 100px);
+
+      /* Xóa margin-top này vì nó gây ra vạch trắng */
+      margin-top: 0;
+
+      /* Giữ nguyên các thuộc tính căn chỉnh form */
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Căn giữa form theo chiều dọc */
+      padding: 20px;
+}
+
+/* Placeholder of username and pass */
+.login-box {
+    margin: auto;
+    background: rgba(255, 255, 255, 0.95); /* Trắng đục nhẹ để thấy mờ nền */
+    padding: 40px;
+    border-radius: 20px; /* Bo góc tròn hơn */
+    width: 380px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Đổ bóng sâu hơn */
+    text-align: center;
+    border: none; /* Bỏ viền thô */
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left; /* Đưa toàn bộ nội dung trong nhóm này về bên trái */
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding-left: 2px; /* Tạo khoảng hở nhỏ so với lề trái cho đẹp */
+    color: #333;
+}
+
+/* Text format of box's name */
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd; /* Viền mỏng màu xám nhạt */
+    border-radius: 8px;    /* Bo góc nhẹ cho ô input */
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà */
+    background: #f9f9f9;
+}
+
+/* Hiệu ứng khi người dùng click vào ô nhập liệu */
+.input-group input:focus {
+    border-color: #2c387e; /* Đổi màu viền sang màu của trường */
+    box-shadow: 0 0 8px rgba(44, 56, 126, 0.2);
+    background: white;
+}
+
+
+
+
+
+/* forgot-pass section */
+.forget-password a {
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.forget-password a:hover {
+    color: #2c387e;
+    text-decoration: underline;
+}
+/*  ENTER BUTTON*/
+.btn-enter {
+    width: 100%; /* Cho nút dài bằng ô input luôn cho cân đối */
+    padding: 12px;
+    border: none;
+    background: #2c387e; /* Màu xanh đồng bộ với Header */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-enter:hover {
+    background: #1a237e; /* Đậm hơn một chút khi di chuột */
+    transform: translateY(-2px); /* Nhích nhẹ lên tạo hiệu ứng nhấn */
+}
+
+.btn-enter:active {
+    transform: translateY(0); /* Lún xuống khi click */
+}

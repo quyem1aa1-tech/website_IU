@@ -95,6 +95,6 @@ public class StudentService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("ERROR: This ID student does not exist: " + userId));
 
-        return new ProfileResponse(user.getStudentId(), user.getUsername(), user.getFullName(), user.getEmail());
+        return new ProfileResponse(user.getUsername(), user.getFullName(), user.getStudentId(),  user.getEmail());
     }
 }
