@@ -59,16 +59,6 @@ public class AuthController {
     }
 
     /**
-     * API Đăng ký tài khoản mới (User Registration)
-     * URL: POST http://localhost:8080/api/auth/signup
-     * * @param request Chứa thông tin đăng ký (username, password, fullname, role)
-     *
-     * @return 200 OK nếu tạo tài khoản thành công | 501/400 nếu có lỗi nghiệp vụ
-     *         hoặc hệ thống
-     */
-
-
-    /**
      * API Quên mật khẩu (Forgot Password)
      * URL: POST http://localhost:8080/api/auth/forgot-password
      * * @param request Chứa email
