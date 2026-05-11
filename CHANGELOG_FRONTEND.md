@@ -1,9 +1,12 @@
+KIỂM TRA LIÊN KẾT HỆ THỐNG WEB:
+KHI CHẠY WEB BẰNG LOCAL HOST HÃY CHÚ Ý NẾU WEB LỖI HÃY NHẤN CHUỘT PHẢI VÀO TRANG WEB CHỌN INSPECT->CHỌN NETWORKING ĐỂ CHECK XEM FILE NÀO BỊ LỖI ĐỒNG THỜI MỞ CỬA SỐ CONSOL ĐỂ XEM LỖI CHI TIẾT LÀ GÌ VÀ SỮA Ở FILE ĐÓ
+
 SCHEDULE FOR FRONTEND
 Member for frontend:
-Vũ Ngọc Khánh Vy-
+Vũ Ngọc Khánh Vy-ITITIU25048
 Nguyễn Chí Tiến-ITITIU25036
 Chung Chí Tâm-ITITIU25032
-Võ Lê Hà Vy-
+Võ Lê Hà Vy-ITITIU25049
 I.XỬ LÍ KHUNG HTML(Khánh Vy)
 1. TẠO KHUNG VÀ CÁC THÀNH PHẦN CHO TRANG LOGIN
 2. TẠO KHUNG VÀ CÁC THÀNH PHẦN CHO HOME
@@ -42,3 +45,36 @@ III. Liên kết với Backend
    Tâm:từ login->account
    Hà Vy: từ Changepassword->logout( trang account được truy cập từ trang home hay trang course đều phải xuất hiện tức là phải duy trì trạng thái đăng nhập cho đến khi đăng xuất mới xóa toàn bộ dữ liệu
    Forgot password and change password( tính năng này chỉ thấy khi đăng nhập thành công và nó nằm trong home)
+   Frontend
+   ↓
+   JSON Request
+   ↓
+   DTO (LoginRequest)
+   ↓
+   Controller
+   ↓
+   Service
+   ↓
+   Repository
+   ↓
+   Database
+   ↓
+   Entity (User)
+   ↓
+   Service xử lý logic
+   ↓
+   DTO (AuthResponse)
+   ↓
+   Controller
+   ↓
+   JSON Response
+   ↓
+   Frontend
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+GIT HUB CHỈ ĐƯỢC TẠO THÊM NHÁNH KHÔNG ĐƯỢC CODE TRỰC TIẾP LÊN NHÁNH MAIN
+CÁC LỆNH CẦN NHỚ: git clone, git pull, git checkout...
+git clone...: down repository
+git pull: update repository
+git checkout (nhánh): chuyển đổi nhánh
+Push and commit lên trên git hub
+Toàn bộ sẽ được đẩy lên nhánh main vào ngày họp lần cuối của buổi fix bug
