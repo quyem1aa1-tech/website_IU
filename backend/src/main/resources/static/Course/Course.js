@@ -7,11 +7,12 @@ let monDaDangKy = [];      // Giỏ hàng cá nhân (chứa đồ đã mua)
 
 // 2. KHI MỞ TRANG WEB LÊN: Đi lấy hàng ngay
 document.addEventListener("DOMContentLoaded", function() {
+// bắt đầu thực hiện một lúc hai hàm cụ thể
     batDauTaiDuLieu();
     ganSuKienTimKiem();
 });
 
-// Hàm điều phối việc tải dữ liệu
+// Hàm điều phối việc đăng kí và drop môn
 async function batDauTaiDuLieu() {
     // Đi tới kho lấy danh sách tổng
     const response1 = await fetch(CUA_HANG_API + "/courses");
