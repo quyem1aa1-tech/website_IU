@@ -14,8 +14,6 @@ import java.util.Optional;
 @Service
 public class AuthService {
 
-    @Autowired
-    private javax.sql.DataSource dataSource;
 
     @Autowired
     private UserRepository userRepository;
