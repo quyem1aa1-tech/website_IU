@@ -34,15 +34,6 @@ public class AuthService {
             return LoginStatus.USER_NOT_FOUND;
         }
 
-        String cleanUsername = username.trim();
-        System.out.println("Đang xử lý login cho: " + cleanUsername);
-        // Ghi chú: Kiểm tra xem Java đang kết nối vào file nào (Rất quan trọng!)
-        try (java.sql.Connection conn = dataSource.getConnection()) {
-            System.out.println("--- DB LOCATION: " + conn.getMetaData().getURL() + " ---");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // Ghi chú: In ra chính xác những gì Thunder Client gửi lên
         System.out.println("DEBUG: Searching for username -> [" + username + "]");
 
