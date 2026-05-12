@@ -70,9 +70,9 @@ public class AuthService {
         User user = userRepository.findByEmail(email).orElse(null);
 
         if (user == null) {
-            // Log tiếng Anh để dễ debug trên server
+            // Debug log
             System.out.println("ERROR: Reset password failed. Email not found: " + email);
-            return null; // Trả về null thay vì false
+            return null;
         }
 
         // 1. Tạo mật khẩu thô (Plain text)
